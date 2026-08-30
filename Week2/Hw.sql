@@ -22,3 +22,9 @@ INSERT INTO Video_Games (Title, Genres, Playtime, Release_date)
 	('Overwatch' 'shooter' '2016-24-05');
 --ERROR:  syntax error at or near "("
 --LINE 7:  ('Overwatch' 'shooter' '2016-24-05');
+
+
+
+
+-- One new concept that I learned about this week was about DISTINCT, distinct takes out values that repeat
+-- I think WHERE is going to be the hardest thing to wrap my head around. I'm not sure I 100% understand it all the way

@@ -1,0 +1,108 @@
+-- Select statement is used to retrive data from a table
+--SELECT * FROM teachers;
+
+-- The * means to select all columns from the table
+--  If wanting tp show only certain columns
+--SELECT first_name, school
+-- Select these columns
+-- From this table
+--from teachers
+
+--SELECT salary, first_name
+--FROM teachers
+--ORDER BY salary DESCl
+
+-- by default PostgreSQL sorts in ascending order
+-- DESC for descending order
+-- ASC means Ascending for number it goes: 1,2,3,4,5
+-- For text it goes: A,B,C,D
+-- For dates oldest to newest
+
+-- DESC puts in reverse order
+--SELECT last_name, first_name
+--FROM teacher
+--Order BY last_name DESC;
+
+
+-- ordering by multiple columns, one going ASC, one going Desc
+--SELECT last_name, school, hire_date
+--FROM teachers
+-- Want to order by school ASC, hire_date by DESC
+--ORDER BY school ASC, hire_date DESC
+
+
+-- We can find unique values by using DISTINCT after SELECT
+-- Removes repeated values, makes data retrival look neat
+
+--SELECT DISTINCT school
+--FROM teachers;
+
+-- WHERE ALLOWS US TO RETIEVE ROWS THAT MEET A CERTIAN CONDITION
+-- SELECT first_name, last_name, school
+-- FROM teachers
+-- WHERE school = 'Myers Middle School';
+
+-- COMNPARISON OPERATORS
+-- = EQAUL TO 
+-- <> OR != NOT EQUAL TO 
+-- > GREATER THAN
+-- < LESS THAN
+-- >=GREATER THAN EQUAL TO
+-- <= LESS THAN EQUAL TO
+-- BETWEEN: WITH A RANGE
+-- IN: MATCH ONE OF SEVERALS VALUES
+
+--FIN ALL THE TEACHERS WHO WERE HIRED BEFORE 1/1/2010
+
+-- SELECT first_name, hire_date
+-- FROM teachers
+-- WHERE hire_date < '2010-01-01';
+
+--  I WANT TO SEE THE TEACHER WHO MAKE FROM 40-60K
+
+-- SELECT first_name, last_name, salary
+-- FROM teachers
+-- WHERE salary BETWEEN 40000 AND 60000;
+-- REMEMBER WHEN USING BETWEEN MUST ALSO HAVE AND
+
+-- SOMETIMES YOU DONT KNOW THE EXACT TEXT YOU ARE LOOKING FOR
+-- WE USE LIKE IN THIS SCENARIO
+
+-- SELECT first_name
+-- FROM teachers
+-- WHERE first_name LIKE 'Sam%';
+-- % is a wildcard, any number or characters can appear
+-- LIKE vs LIKE
+-- LIKE is case sensitive
+-- ILIKE is NOT case sensitive
+
+-- _ matches exatly one character
+
+-- SELECT first_name
+-- FROM teachers
+-- WHERE first_name LIKE '_anet';
+
+-- SELECT *
+-- FROM teachers
+-- WHERE school = 'Myers Middle School'
+-- AND salary < 40000;
+
+-- A row must satisfy both conditions
+
+-- Use ore when either condition can be true
+
+-- SELECT *
+-- FROM teachers
+-- WHERE last_name = 'Cole'
+-- OR last_name = 'Bush'
+
+-- USING parantheses
+-- Parantheses become important when combing AND and OR
+
+-- SELECT *
+-- FROM teachers
+-- WHERE school ='F.D. Roosvelt HS'
+-- AND(salary <30000 or salary >40000);
+
+
+

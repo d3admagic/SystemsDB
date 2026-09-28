@@ -1,0 +1,209 @@
+-- -- Create a table that stores information about video games
+-- CREATE TABLE games (
+--     -- Automatically generates a unique ID for each game
+--     game_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
+--     -- Stores the name of the game
+--     title varchar(100) NOT NULL,
+
+--     -- Stores the genre of the game
+--     genre varchar(50),
+
+--     -- Stores the price with 2 decimal places
+--     price numeric(6,2)
+-- );
+
+
+
+-- -- Add three games to the games table
+-- INSERT INTO games (title, genre, price)
+-- VALUES
+--     ('Elden Ring', 'RPG', 59.99),
+--     ('Minecraft', 'Sandbox', 29.99),
+--     ('Helldivers 2', 'Shooter', 39.99);
+
+
+
+-- -- Create a second table that stores game reviews
+-- CREATE TABLE reviews (
+--     -- Automatically generates a unique ID for each review
+--     review_id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
+--     -- Connects each review to a game in the games table
+--     game_id integer REFERENCES games(game_id),
+-- 	--REF table_name(Column name)
+-- 	--An FK (Foreign Key) is just a PJ(Primary Key) From another table 
+	
+--     -- Stores the review score
+--     score integer
+-- );
+
+-- -- Add reviews and connect them to games using game_id
+-- INSERT INTO reviews (game_id, score)
+-- VALUES
+--     (1, 10), -- Elden Ring
+--     (2, 9),  -- Minecraft
+--     (1, 8);  -- Elden Ring
+
+
+
+-- How are these two tables connected?
+-- These are conneted by game.game_id <----->  reviews.game_id 
+
+-- Primary key uniquely identifies row
+-- A foreign Key references a row in another table
+
+-- Think of it as:
+-- PK: identifies the record
+-- FK: connets to that record
+
+
+-- Why do we use JOINS?
+
+-- a JOIN allows our program to combine related info for is
+
+
+-- SELECT * 
+-- FROM reviews
+
+-- --INNER JOIN: Gives me rows that have a match in both tables
+-- -- SELECT the games title from games an the score from reviews
+-- SELECT games.title, reviews.score -- table_name.column_name
+
+-- -- Start with the games table
+-- FROM games
+
+-- -- Connect the reviews table to the games table
+-- INNER JOIN reviews
+
+-- -- Match rows where both tables have the same game_id
+-- ON games.game_id = reviews.game_id;
+
+
+-- This line tells Postgre HOW the 2 tables are related
+-- ON games.game_id = reviews.game_id;
+
+
+-- Postgre Essentially asks:
+-- Does this game_id match the game_id?
+
+
+-- -- LEFT JOIN: Keeps everything from the left table
+-- -- select the game title and its review score
+-- SELECT games.title, reviews.score -- tableName.ColumnName
+
+-- FROM games
+
+-- LEFT JOIN reviews
+
+-- -- match the tables using what is connecting them?
+-- ON games.game_id = reviews.game_id;
+
+
+-- INNER JOIN: Only matching rows
+
+-- LEFT JOIN: Everything from the left 
+--				+ matches the right
+
+--NULL tells us there was no matching the right
+
+-- Tables ALIASES
+-- Typing full table names can be time consuming 
+-- we create aliases for thr table names
+
+-- g is now games
+-- r is now reviews
+-- select the title an the review score
+
+-- SELECT g.title, r.score
+
+-- -- give games the ALIASES g
+-- FROM games as g
+
+
+-- INNER JOIN reviews AS r
+
+-- ON g.game_id = r.game_id
+
+
+-- -- I want to see games that score higher than a 9
+
+-- WHERE r.score >= 9
+
+-- ORDER BY r.score ASC;
+
+-- JOINS dont replace what we've learned, they allow us to use those skills acroww multiple tables 
+
+
+-- HOW TO CREATE TABLE NAMED STUDENTS
+CREATE TABLE students(student_id integer PRIMARY KEY, student_name VARCHAR(100), major TEXT);
+
+
+
+
+-- HOW TO INSERT DATA INTO TABLE 
+INSERT INTO students(student_id,student_name,major)
+VALUES
+('1010440', 'Ezekiel Lee', 'Cyber Sec'),
+('1010440', 'Ezekiel Lee', 'Cyber Sec'),
+
+
+
+-- Query that selects every column and row
+SELECT * FROM students;
+
+-- * pulls everything from said table 
+
+-- Only want to see certain columns
+SELECT student_name, major
+FROM studens;
+
+-- only want to see students are in the networking program
+SELECT 	student_name, major
+FROM students
+WHERE major = "Networking "
+AND student_id = 1010440
+
+--if we wanted to start
+-- use Order BY
+-- ASC is lowest to highest
+-- DESC is high to low
+
+--FUNCTIONS
+--Perform calcs over multiple rows
+-- count how students exist
+
+SELECT COUNT(*)
+FROM students;
+
+--AVE  tuition cost
+SELECT AVG(tuition_cost)
+FROM students;
+
+SELECT MAX (tuition_cost)
+FROM students;
+
+
+
+
+-- How to update/alter table once its been created
+-- change major of the student
+
+UPDATE students
+-- update changes the existing data
+
+--set the new value
+SET major = "cyber"
+
+-- Only change this specific row 
+where student_id = 102;
+
+alter table students
+add column tuition_cost numeric(10,2)
+
+
+
+
+-- NULL mean the value is missing or unknown
+-- NOT NULL requies a value, add NOT NULL after the data type (columnNAME data type not null)
+student_name Varchar(100) NOT NULL

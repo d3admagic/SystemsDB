@@ -60,7 +60,7 @@
 
 -- -- Small tables dont benefit from Indexes
 -- -- When the entire table fits into memory, 
--- -- Its faster for SQL to read all row directly than perform mulitple omdex lookups
+-- -- Its faster for SQL to read all row directly than perform mulitple index lookups
 
 -- -- Indexes have lookup overhead
 -- -- Each index lookup adds extra work,

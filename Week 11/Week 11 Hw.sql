@@ -29,3 +29,13 @@
 
 -- EXPLAIN ANALYZE SELECT * FROM products_big 
 -- WHERE category = 'Skincare' AND price > 100.00;
+
+
+-- Questions --
+
+
+-- Without an Index the query scans the whole database, but an index looks for certain terms and only scans those 
+
+-- It chooses an index when it figures out that it would be faster than scanning the whole thing 
+
+-- The bigger list took longer than the 100 that we did in class last week.  
